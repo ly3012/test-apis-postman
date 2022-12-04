@@ -1,0 +1,843 @@
+{
+	"info": {
+		"_postman_id": "5dcff66a-56de-4402-8c3e-e12414c2380a",
+		"name": "1.Test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "22695486-5dcff66a-56de-4402-8c3e-e12414c2380a"
+	},
+	"item": [
+		{
+			"name": "LogIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "308cea70-6972-4629-bcf8-73cdd8ebb67b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Đăng nhập thành công\", function () {\r",
+							"    if(jsonData.token);\r",
+							"    if(jsonData.type);\r",
+							"    if(jsonData.name);\r",
+							"    if(jsonData.username);\r",
+							"    if(jsonData.roles);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"token\", jsonData.token);\r",
+							"pm.globals.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "453ccb14-fac5-4e61-bb76-c6180c95d72f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "790dab33-aa35-4bbe-8870-f39e0f19a281",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ly3012\",\r\n    \"password\": \"301201\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "40111c1d-7eae-4cf2-83fc-5ce57b0cbeb0",
+					"name": "LogIn",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ly3012\",\r\n    \"password\": \"301201\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Nov 2022 00:34:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJseTMwMTIiLCJleHAiOjE2Njk2ODIwNzksImlhdCI6MTY2OTU5NTY3OX0.vcxelfeE8SGr3_Fd8p_nYiauEz2lKQQSrWY1PDiV2yFZZGuc5eN1aC_y_xLXJZ3LUfnIWh30qW4Y3G8JH6J5gw\",\n    \"type\": \"Bearer\",\n    \"name\": \"Phùng Thị Lý\",\n    \"username\": \"ly3012\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "search book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50e5c996-ff1f-43c3-8e56-8872d04ae09c",
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"dữ liệu trả về có đúng định dạng không?\", function () {\r",
+							"     if(jsonData[0].idBook);\r",
+							"     if(jsonData[0].name);\r",
+							"     if(jsonData[0].author);\r",
+							"     if(jsonData[0].numberOfPages);\r",
+							"     if(jsonData[0].released);\r",
+							"     if(jsonData[0].amount);\r",
+							"     if(jsonData[0].image);\r",
+							"     if(jsonData[0].updatedAt);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "8ea9917c-642e-447b-8e4e-098677142062",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/books/search/?query=n",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"books",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "n"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "510de613-0074-4924-94fc-babfd71b9775",
+					"name": "search book",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin/books/search/?query=n",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"books",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "n"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Nov 2022 00:57:25 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"idBook\": 1,\n        \"name\": \"Những ngày thơ ấu\",\n        \"author\": \"Nguyên Hồng\",\n        \"numberOfPages\": 219,\n        \"released\": \"2018\",\n        \"amount\": 15,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T06:54:34.000+00:00\"\n    },\n    {\n        \"idBook\": 2,\n        \"name\": \"Cây cam ngọt của tôi\",\n        \"author\": \"José Mauro de Vasconcelos\",\n        \"numberOfPages\": 484,\n        \"released\": \"2016\",\n        \"amount\": 12,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-28T17:37:49.000+00:00\"\n    },\n    {\n        \"idBook\": 3,\n        \"name\": \"Dế mèn phiêu lưu k\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 128,\n        \"released\": \"2012\",\n        \"amount\": 17,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-12T05:53:40.000+00:00\"\n    },\n    {\n        \"idBook\": 4,\n        \"name\": \"Điều kỳ diệu của tiệm tạp hóa Namiya\",\n        \"author\": \"Higashino Keigo\",\n        \"numberOfPages\": 358,\n        \"released\": \"2020\",\n        \"amount\": 6,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T07:18:59.000+00:00\"\n    },\n    {\n        \"idBook\": 5,\n        \"name\": \"Những giấc mơ ở hiệu sách morisaki\",\n        \"author\": \"Yagisawa Satoshi\",\n        \"numberOfPages\": 118,\n        \"released\": \"2020\",\n        \"amount\": 19,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T07:18:59.000+00:00\"\n    },\n    {\n        \"idBook\": 10,\n        \"name\": \"Bắt trẻ đồng xanh\",\n        \"author\": \"J.D.Salinger\",\n        \"numberOfPages\": 319,\n        \"released\": \"2018\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T07:18:59.000+00:00\"\n    },\n    {\n        \"idBook\": 11,\n        \"name\": \"Nhà giả kim\",\n        \"author\": \"Paulo Coelho\",\n        \"numberOfPages\": 270,\n        \"released\": \"2017\",\n        \"amount\": 10,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-06T01:56:25.000+00:00\"\n    },\n    {\n        \"idBook\": 12,\n        \"name\": \"Cho tôi xin 1 vé đi tuổi thơ \",\n        \"author\": \" Nguyễn Nhật Ánh\",\n        \"numberOfPages\": 210,\n        \"released\": \"2016\",\n        \"amount\": 5,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-06T01:57:38.000+00:00\"\n    },\n    {\n        \"idBook\": 13,\n        \"name\": \"Những Tấm Lòng Cao Cả\",\n        \"author\": \"Edmondo De Amicis\",\n        \"numberOfPages\": 258,\n        \"released\": \"2016\",\n        \"amount\": 4,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-06T01:58:27.000+00:00\"\n    },\n    {\n        \"idBook\": 16,\n        \"name\": \"Người đua diều\",\n        \"author\": \"Hector Malot\",\n        \"numberOfPages\": 577,\n        \"released\": \"2017\",\n        \"amount\": 15,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-20T09:09:11.000+00:00\"\n    },\n    {\n        \"idBook\": 17,\n        \"name\": \"Đắc nhân tâm\",\n        \"author\": \"Dale Carnegie\",\n        \"numberOfPages\": 276,\n        \"released\": \"2016\",\n        \"amount\": 11,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-28T01:40:12.000+00:00\"\n    },\n    {\n        \"idBook\": 18,\n        \"name\": \"Hoàng Tử bé\",\n        \"author\": \"Antoine\",\n        \"numberOfPages\": 111,\n        \"released\": \"2019\",\n        \"amount\": 18,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-20T09:09:11.000+00:00\"\n    },\n    {\n        \"idBook\": 19,\n        \"name\": \"Người phi công\",\n        \"author\": \"Antoine de\",\n        \"numberOfPages\": 156,\n        \"released\": \"2018\",\n        \"amount\": 16,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-22T01:14:25.000+00:00\"\n    },\n    {\n        \"idBook\": 20,\n        \"name\": \"Bay đêm\",\n        \"author\": \"Vol de nuit\",\n        \"numberOfPages\": 138,\n        \"released\": \"2012\",\n        \"amount\": 8,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-19T15:13:34.000+00:00\"\n    },\n    {\n        \"idBook\": 22,\n        \"name\": \"Những giấc mơ ở hiệu sách morisaki\",\n        \"author\": \"Yagisawa Satoshi\",\n        \"numberOfPages\": 319,\n        \"released\": \"2020\",\n        \"amount\": 17,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-28T10:16:54.000+00:00\"\n    },\n    {\n        \"idBook\": 23,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 118,\n        \"released\": \"2012\",\n        \"amount\": 15,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-19T15:16:46.000+00:00\"\n    },\n    {\n        \"idBook\": 24,\n        \"name\": \"Chiếc lá cuối cùng\",\n        \"author\": \"O.Henry\",\n        \"numberOfPages\": 118,\n        \"released\": \"2012\",\n        \"amount\": 14,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-19T15:16:21.000+00:00\"\n    },\n    {\n        \"idBook\": 25,\n        \"name\": \"Bắt trẻ đồng xanh\",\n        \"author\": \"Antoine de\",\n        \"numberOfPages\": 156,\n        \"released\": \"2020\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T06:54:34.000+00:00\"\n    },\n    {\n        \"idBook\": 26,\n        \"name\": \"Không gia đình\",\n        \"author\": \"Hector Malot\",\n        \"numberOfPages\": 577,\n        \"released\": \"2017\",\n        \"amount\": 10,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-27T05:33:09.000+00:00\"\n    },\n    {\n        \"idBook\": 27,\n        \"name\": \"Đọc Vị Bất Kỳ Ai\",\n        \"author\": \" David J.Lieberman\",\n        \"numberOfPages\": 357,\n        \"released\": \"2016\",\n        \"amount\": 15,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-27T05:33:53.000+00:00\"\n    },\n    {\n        \"idBook\": 46,\n        \"name\": \"Chiến binh cầu vồng\",\n        \"author\": \"Andrea Hirata\",\n        \"numberOfPages\": 386,\n        \"released\": \"2012\",\n        \"amount\": 17,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-28T10:21:41.000+00:00\"\n    },\n    {\n        \"idBook\": 47,\n        \"name\": \"Tuổi thơ dữ dội\",\n        \"author\": \"Phùng Quán\",\n        \"numberOfPages\": 345,\n        \"released\": \"2018\",\n        \"amount\": 12,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-28T10:22:16.000+00:00\"\n    },\n    {\n        \"idBook\": 48,\n        \"name\": \"Ngàn hạc giấy\",\n        \"author\": \"Sadako\",\n        \"numberOfPages\": 234,\n        \"released\": \"2019\",\n        \"amount\": 12,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-28T17:30:31.000+00:00\"\n    },\n    {\n        \"idBook\": 49,\n        \"name\": \"Bỉ vỏ\",\n        \"author\": \"Nguyên Hồng\",\n        \"numberOfPages\": 236,\n        \"released\": \"2016\",\n        \"amount\": 8,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T02:33:36.000+00:00\"\n    },\n    {\n        \"idBook\": 50,\n        \"name\": \"Ngồi khóc trên cây\",\n        \"author\": \"Nguyễn Nhật Ánh\",\n        \"numberOfPages\": 318,\n        \"released\": \"2018\",\n        \"amount\": 11,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T06:54:34.000+00:00\"\n    },\n    {\n        \"idBook\": 52,\n        \"name\": \"Nếu biết trăm năm là hữu hạn\",\n        \"author\": \"Phạm Lữ Ân\",\n        \"numberOfPages\": 300,\n        \"released\": \"2015\",\n        \"amount\": 12,\n        \"image\": null,\n        \"updatedAt\": \"2022-09-29T07:18:28.000+00:00\"\n    },\n    {\n        \"idBook\": 54,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 128,\n        \"released\": \"2012\",\n        \"amount\": 17,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-12T06:24:03.000+00:00\"\n    },\n    {\n        \"idBook\": 72,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T10:40:42.000+00:00\"\n    },\n    {\n        \"idBook\": 73,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T10:41:13.000+00:00\"\n    },\n    {\n        \"idBook\": 75,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T10:48:22.000+00:00\"\n    },\n    {\n        \"idBook\": 86,\n        \"name\": \"name81687\",\n        \"author\": \"author7867\",\n        \"numberOfPages\": 100,\n        \"released\": \"abc\",\n        \"amount\": 123,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T11:53:04.000+00:00\"\n    },\n    {\n        \"idBook\": 95,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T12:22:05.000+00:00\"\n    },\n    {\n        \"idBook\": 96,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T12:22:07.000+00:00\"\n    },\n    {\n        \"idBook\": 97,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T12:26:03.000+00:00\"\n    },\n    {\n        \"idBook\": 98,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T12:26:25.000+00:00\"\n    },\n    {\n        \"idBook\": 99,\n        \"name\": \"Dế mèn phiêu lưu ký\",\n        \"author\": \"Tô Hoài\",\n        \"numberOfPages\": 178,\n        \"released\": \"2012\",\n        \"amount\": 9,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-13T12:26:26.000+00:00\"\n    },\n    {\n        \"idBook\": 103,\n        \"name\": \"name55163\",\n        \"author\": \"author46232\",\n        \"numberOfPages\": 100,\n        \"released\": \"abc\",\n        \"amount\": 123,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-14T00:52:11.000+00:00\"\n    },\n    {\n        \"idBook\": 106,\n        \"name\": \"name26310\",\n        \"author\": \"author67163\",\n        \"numberOfPages\": 100,\n        \"released\": \"abc\",\n        \"amount\": 123,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-14T01:24:27.000+00:00\"\n    },\n    {\n        \"idBook\": 107,\n        \"name\": \"name43272\",\n        \"author\": \"author84130\",\n        \"numberOfPages\": 100,\n        \"released\": \"abc\",\n        \"amount\": 123,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-20T07:59:14.000+00:00\"\n    },\n    {\n        \"idBook\": 110,\n        \"name\": \"name71460\",\n        \"author\": \"author1350\",\n        \"numberOfPages\": 100,\n        \"released\": \"abc\",\n        \"amount\": 123,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-20T10:47:50.000+00:00\"\n    },\n    {\n        \"idBook\": 112,\n        \"name\": \"name67335\",\n        \"author\": \"author\",\n        \"numberOfPages\": 100,\n        \"released\": \"abc\",\n        \"amount\": 123,\n        \"image\": null,\n        \"updatedAt\": \"2022-11-21T00:32:11.000+00:00\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "add book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d12c5160-edf6-4f8b-8d52-3538067398f1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"dữ liệu trả về có đúng định dạng không?\", function () {\r",
+							"     if(jsonData.idBook);\r",
+							"     if(jsonData.name);\r",
+							"     if(jsonData.author);\r",
+							"     if(jsonData.numberOfPages);\r",
+							"     if(jsonData.released);\r",
+							"     if(jsonData.amount);\r",
+							"     if(jsonData.image);\r",
+							"     if(jsonData.updatedAt);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"IDnewItem\",jsonData.idBook);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "acdf06d3-24fd-48d5-b505-7572e9d19352",
+						"exec": [
+							"pm.collectionVariables.set(\"name\", (\"name\" + parseInt(Math.random().toString(9).substring(2, 7))));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d98583f2-cb0b-47f5-9c70-819e28aabd69",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"author\": \"author\",\r\n    \"numberOfPages\": 100,\r\n    \"released\": \"abc\",\r\n    \"amount\": 123\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "c15611bc-e3c8-4ee3-bd42-ee7f7da584f7",
+					"name": "add book",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"author\": \"author\",\r\n    \"numberOfPages\": 100,\r\n    \"released\": \"abc\",\r\n    \"amount\": 123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/books",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Nov 2022 01:24:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"idBook\": 118,\n    \"name\": \"name42442\",\n    \"author\": \"author\",\n    \"numberOfPages\": 100,\n    \"released\": \"abc\",\n    \"amount\": 123,\n    \"image\": null,\n    \"updatedAt\": \"2022-11-28T01:24:52.039+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "updateBook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "68961404-554d-4413-bf76-d738e9751d5d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Dạng dữ liệu trả về có đúng không?\", function () {\r",
+							"     if(jsonData.idBook);\r",
+							"     if(jsonData.name);\r",
+							"     if(jsonData.author);\r",
+							"     if(jsonData.numberOfPages);\r",
+							"     if(jsonData.released);\r",
+							"     if(jsonData.amount);\r",
+							"     if(jsonData.image);\r",
+							"     if(jsonData.updatedAt);\r",
+							"    pm.expect(jsonData.idBook)===\"{{newItem}}\";\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "9a0cf8c0-db64-46b5-85cc-c309700395e9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dế mèn phiêu lưu ký\",\r\n    \"author\": \"Tô Hoài\",\r\n    \"numberOfPages\": 178,\r\n    \"released\": \"2012\",\r\n    \"amount\":9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/books/{{IDnewItem}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"books",
+						"{{IDnewItem}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "bd356ae0-2104-4f86-af8f-0da1296489fc",
+					"name": "updateBook",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Dế mèn phiêu lưu ký\",\r\n    \"author\": \"Tô Hoài\",\r\n    \"numberOfPages\": 178,\r\n    \"released\": \"2012\",\r\n    \"amount\":9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/books/{{newItem}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"books",
+								"{{newItem}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Nov 2022 00:59:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"idBook\": 117,\n    \"name\": \"Dế mèn phiêu lưu ký\",\n    \"author\": \"Tô Hoài\",\n    \"numberOfPages\": 178,\n    \"released\": \"2012\",\n    \"amount\": 9,\n    \"image\": null,\n    \"updatedAt\": \"2022-11-28T00:59:01.333+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "058dc42d-3e89-420a-b8f8-129343d7cc82",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Xóa thành công?\", function () {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Xóa thành công\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "41346de9-f413-4737-85d4-d5ecfa0af690",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/books/{{IDnewItem}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"books",
+						"{{IDnewItem}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "55717042-3d5a-4a5e-ac5a-05369da929a0",
+					"name": "delete book",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin/books/{{newItem}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"books",
+								"{{newItem}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Nov 2022 00:59:15 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Xóa thành công\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f98e4265-769a-4063-882b-e4a015de33cd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2fd50ea6-8a83-429b-b8ca-8e070c366c16",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3aa93f9a-9d9f-46e5-a53e-ce1b85dc4922",
+			"key": "url",
+			"value": ""
+		},
+		{
+			"id": "6d1e8e75-abde-4473-93af-08ff3d0d00b9",
+			"key": "name",
+			"value": ""
+		},
+		{
+			"id": "157423e9-312a-4268-af17-00b5ece3dd12",
+			"key": "token",
+			"value": ""
+		},
+		{
+			"id": "06110028-9516-4314-a751-26bd4b530662",
+			"key": "author",
+			"value": ""
+		},
+		{
+			"id": "4b6bd48f-9c59-434a-8be9-56a77dfa68f0",
+			"key": "IDnewItem",
+			"value": ""
+		}
+	]
+}
